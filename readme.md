@@ -7,10 +7,11 @@ You should use one of these files as the source for your translation.
 Edit one of the existing `lang_*_.properties`-files or create a new one.
 
 ## Linux shell
-Creating a translation file for your language is a little bash script example:
+Creation of a translation file for your language (edit `LANG=`) as a little bash script:
 
 ```bash
 LANG=de_DE
+
 while read LINE; do
   echo "$LINE" | grep -q = && (grep ^$(echo "$LINE" | cut -d = -f1)= lang_${LANG}.properties || echo "#TRANSLATE $LINE")\
   || echo "$LINE"
