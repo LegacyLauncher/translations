@@ -7,13 +7,14 @@ You should use one of these files as the source for your translation.
 Edit one of the existing `lang_*_.properties`-files or create a new one.
 
 ## Linux shell
-Creation of a translation file for your language (edit `LANG=`) as a little bash script:
+Creation of a translation file for your language as a little bash script:
 
 ```bash
-LANG=de_DE
+# change to your desired language code
+lang=de_DE
 
 while read LINE; do
-  echo "$LINE" | grep -q = && (grep ^$(echo "$LINE" | cut -d = -f1)= lang_${LANG}.properties || echo "#TRANSLATE $LINE")\
+  echo "$LINE" | grep -q = && (grep ^$(echo "$LINE" | cut -d = -f1)= lang_${lang}.properties || echo "#TRANSLATE $LINE")\
   || echo "$LINE"
 done < lang_en_US.properties > translateme.txt
 ```
