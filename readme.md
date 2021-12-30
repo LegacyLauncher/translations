@@ -1,4 +1,4 @@
-# TLauncher Translation Repository
+# TL Translation Repository
 The files `lang_en_US.properties` and `lang_ru_RU.properties` are maintained by the TL-developers.
 All new strings are added to these files.
 
