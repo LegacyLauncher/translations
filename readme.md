@@ -14,8 +14,10 @@ Creation of a translation file for your language as a little bash script:
 lang=de_DE
 
 while read LINE; do
-  echo "$LINE" | grep -q = && (grep ^$(echo "$LINE" | cut -d = -f1)= lang_${lang}.properties || echo "#TRANSLATE $LINE")\
-  || echo "$LINE"
+  echo "$LINE" | grep -q = && (
+    KEY=$(echo "$LINE" | cut -d = -f1 | sed 's/\([^#[:alnum:]]\)/\\\1/g')
+    grep "^${KEY}=" lang_${lang}.properties || echo "#TRANSLATE $LINE"
+  ) || echo "$LINE"
 done < lang_en_US.properties > translateme.txt
 ```
 
